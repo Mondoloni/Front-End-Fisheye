@@ -1,3 +1,6 @@
+    //récupére les données des photographes dans le fichier
+    //JSON photographers.json
+    //et retourne un tableau
     async function getPhotographers() {
           
         let photographers=[]
