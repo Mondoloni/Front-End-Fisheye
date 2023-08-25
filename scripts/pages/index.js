@@ -4,7 +4,7 @@
     async function getPhotographers() {
           
         let photographers=[]
-        let reponse=await fetch('./../data/photographers.json')
+        let reponse=await fetch('./data/photographers.json')
         let data=await reponse.json()
 
         return ({
