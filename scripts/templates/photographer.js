@@ -1,13 +1,19 @@
 function photographerTemplate(data) {
     const { name,id,city,country,tagline,price, portrait } = data;
-
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
         const img = document.createElement( 'img' );
+        const lienPhotographe =document.createElement('a') 
+
         img.setAttribute("src", picture)
         img.setAttribute("alt", name)
+
+        lienPhotographe.setAttribute("href",`./photographer.html?id=${id}`)
+        lienPhotographe.setAttribute("aria-label",`Lien vers la page du photogrape ${name}`)
+
+        article.appendChild(lienPhotographe)
 
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
@@ -21,12 +27,12 @@ function photographerTemplate(data) {
         const h5=document.createElement('h5')
         h5.textContent=`${price}€/jour`
 
-        article.appendChild(img)
-        article.appendChild(h2);
+        lienPhotographe.appendChild(img)
+        lienPhotographe.appendChild(h2);
         article.appendChild(h3)
         article.appendChild(h4)
         article.appendChild(h5)
-        
+
         return (article);
     }
     return { name, picture, getUserCardDOM }
