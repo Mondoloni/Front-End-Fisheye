@@ -1,63 +1,51 @@
 function mediaPageTemplate(data) {
-    // let photopgraph=data[0][0];
-    // //  console.log(data[0][0].name);
-    // const medias=data[1];
-    // const {name,id,city,country,tagline,price, portrait}=photopgraph;
-    
-    // const picture = `assets/photographers/${portrait}`;
 
+    const {name,photographerId,title,image,likes,price, date,video}=data;
+    
+    let picture ;
+    let media;
     function getMediaTemplate() {
         
-        //Partie avec le nom prenom, ville, image, citation du phtographe
-        // const div_photograph_name=document.createElement('div');
-        // div_photograph_name.setAttribute("class","photograph-name");
-        // const id_photograph = document.createElement( 'h2' );
-        // id_photograph.textContent=name;
-        // const town_photograph = document.createElement( 'h3' );
-        // town_photograph.textContent=`${city}, ${country}`
-        // const tagline_photograph =document.createElement('h4');
-        // tagline_photograph.textContent= tagline;
-        // const img = document.createElement( 'img' );
-        // img.setAttribute("src", picture)
-        // img.setAttribute("alt", name)
+        const lien_ligthbox=document.createElement('a');
+        lien_ligthbox.setAttribute("href","#");
 
-        // div_photograph_name.appendChild(id_photograph);
-        // div_photograph_name.appendChild(town_photograph);
-        // div_photograph_name.appendChild(tagline_photograph);
-
-        //Partie des médias du photographe
-
-        // const div_photograph_medias=document.createElement('div');
-        // div_photograph_medias.setAttribute("class","photograph-medias");
+        let source = image;
+        if(image==undefined){
+             picture = `assets/Sample Photos/${photographerId}/${video}`;
+            media=document.createElement("video");
+            media.setAttribute("src",picture);
+            media.setAttribute("alt",title);
+        }
+        else{
+            picture = `assets/Sample Photos/${photographerId}/${image}`;
+            media=document.createElement("img");
+            media.setAttribute("src",picture);
+            media.setAttribute("alt",title);
+            
+        }
+       
+        media.setAttribute("src",picture);
+        media.setAttribute("alt",title);
+        lien_ligthbox.appendChild(media);
         
-        // const label_tri_medias=document.createElement('label');
-        // label_tri_medias.textContent="Trier par";
+        const divTitreCoeurMedias = document.createElement('div');
+        divTitreCoeurMedias.setAttribute("class","titre_coeur_medias");
+        const NomMedias=document.createElement("h3");
+        NomMedias.textContent=title;
+        const NbLikesMedias=document.createElement("h4");
+        NbLikesMedias.textContent=likes;
+        const imgCoeur=document.createElement("img");
+        imgCoeur.setAttribute("src","assets/icons/favorite-Heart.svg");
+        imgCoeur.setAttribute("alt","Likes");
 
-        // const select_tri_medias=document.createElement('select');
-        // select_tri_medias.setAttribute("id","tri_medias");
+        divTitreCoeurMedias.appendChild(NomMedias);
+        divTitreCoeurMedias.appendChild(NbLikesMedias);
+        divTitreCoeurMedias.appendChild(imgCoeur);
 
-        // const option_tri_popularite=document.createElement('option');
-        // option_tri_popularite.setAttribute("value","popularite");
-        // option_tri_popularite.setAttribute("selected",true);
-        // option_tri_popularite.textContent="Popularité"
-        // const option_tri_date=document.createElement('option');
-        // option_tri_date.setAttribute("value","date");
-        // option_tri_date.textContent="Date";
-        // const option_tri_titre=document.createElement('option');
-        // option_tri_titre.setAttribute("value","titre");
-        // option_tri_titre.textContent="Titre"
-        
-        // select_tri_medias.appendChild(option_tri_popularite);
-        // select_tri_medias.appendChild(option_tri_date);
-        // select_tri_medias.appendChild(option_tri_titre);
-
-
-//         label_tri_medias.appendChild(select_tri_medias);
-//         div_photograph_medias.appendChild(label_tri_medias);
-// console.log(label_tri_medias);
-
-
-        // return {div_photograph_name,img,div_photograph_medias};
+        lien_ligthbox.appendChild(divTitreCoeurMedias);
+        // console.log(lien_ligthbox);
+    return (lien_ligthbox);
     }
+    return {picture,getMediaTemplate};
     // return { name, picture, getPhotographTemplate }
 }

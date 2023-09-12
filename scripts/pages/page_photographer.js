@@ -4,9 +4,7 @@ async function getPhotographerById()
     let photograph=[];
     let params = new URL(document.location).searchParams;
     let idToFetch = Number(params.get("id"));
-
-
-let response = await fetch('./data/photographers.json');
+    let response = await fetch('./data/photographers.json');
 
 if(response.ok){
     let data=await response.json();
@@ -18,7 +16,6 @@ if(response.ok){
     photograph.push(MediaToPhotograp)
    
     return ({photograph});
-    // return ({photograph:[...photographersWithId]});
     }
 else
     {
@@ -36,17 +33,28 @@ async function displayData(photograph) {
 
         const photographerMain=document.getElementById("main");
         photographerMain.appendChild(userCardDOM.div_photograph_medias);
+
+        const divMedia=document.createElement("div");
+        divMedia.setAttribute("class","medias-photograph");
+        userCardDOM.div_photograph_medias.appendChild(divMedia);
+
+        photographerMain.appendChild(userCardDOM.divLikes);
+
+        //Ajout du nom du photographe dans la modal
+        const modalSection=document.getElementById("header-modal-contact");
+        modalSection.appendChild(userCardDOM.h2NomModal);
+        // const modalImgClose=document.getElementById("imgclosemodal");
+        // modalSection.insertBefore(userCardDOM.h2NomModal,modalImgClose);
+
+
         photograph[1].forEach((medias) => {
-            console.log(medias);
-         const mediaModel=mediaPageTemplate(medias);
-          
-         // const photographerModel = photographerTemplate(photographer);
-         // const userCardDOM = photographerModel.getUserCardDOM();
-         // photographersSection.appendChild(userCardDOM);
-    });
+            // console.log(medias);
+            const mediaModel=mediaPageTemplate(medias);
+            const userCardMedia=mediaModel.getMediaTemplate();
+            divMedia.appendChild(userCardMedia);
+         });
         // console.log(photograph[1]);
-    
-}
+    }
 
  async function photopgraph() {
     // Récupère les datas des photographes

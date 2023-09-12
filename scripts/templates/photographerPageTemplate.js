@@ -1,9 +1,5 @@
 function photographerPageTemplate(data) {
-    // let photopgraph=data[0][0];
-    //  console.log(data[0]);
-    // const medias=data[1];
-    const {name,id,city,country,tagline,price, portrait}=data[0];
-    // console.log(name);
+    const {name,id,city,country,tagline,price,portrait}=data[0];
     const picture = `assets/photographers/${portrait}`;
 
     function getPhotographTemplate() {
@@ -54,10 +50,35 @@ function photographerPageTemplate(data) {
 
         label_tri_medias.appendChild(select_tri_medias);
         div_photograph_medias.appendChild(label_tri_medias);
+
+        //Div des likes et du tarifs journalier en bas de page
+        const divLikes=document.createElement("div");
+        divLikes.setAttribute("class","photograph_likes");
+
+        const h4LikesNbr=document.createElement("h4");
+        h4LikesNbr.setAttribute("class","likes-number");
+        h4LikesNbr.textContent="10000";
+
+        const imgCoeurLikes=document.createElement("img");
+        imgCoeurLikes.setAttribute("src","assets/icons/favorite-Heart-Black.svg");
+ 
+        
+        const h4Tarif=document.createElement("h4");
+        h4Tarif.setAttribute("class","tarif-journalier");
+        h4Tarif.textContent=`${price}€ / jour`;
+
+        divLikes.appendChild(h4LikesNbr);
+        divLikes.appendChild(imgCoeurLikes);
+        divLikes.appendChild(h4Tarif);
+
+    //Pour le nom dans la modal
+    const h2NomModal=document.createElement("h2");
+    h2NomModal.textContent=name;
+        
 // console.log(label_tri_medias);
 
 
-        return {div_photograph_name,img,div_photograph_medias};
+        return {div_photograph_name,img,div_photograph_medias,divLikes,h2NomModal};
     }
-    return { name, picture, getPhotographTemplate }
+    return { name, picture, getPhotographTemplate };
 }
