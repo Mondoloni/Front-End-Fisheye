@@ -22,6 +22,7 @@ async function getPhotographerById() {
 
 async function displayData(photograph) {
 
+	let nbLikesTotal=0;
 	const photographersSection = document.querySelector(".photograph-header");
 	//On passe en paramètre au template de la page photograph les données liées au photographe
 	// qui ont été retourné par la fonction getPhotographerById
@@ -46,6 +47,8 @@ async function displayData(photograph) {
 	photographerMain.appendChild(userCardDOM.divLikes);
 	//On parcours les medias du photographe pour crééer les cards avec la fonction getMediaTemplate 
 	photograph[1].forEach((medias) => {
+		//On ajout chaque like de chaque medias
+		nbLikesTotal+=medias.likes;
 		// eslint-disable-next-line no-undef
 		const mediaModel = mediaPageTemplate(medias);
 		// const mediaModel = mediaPageTemplate(medias,photograph);
@@ -56,6 +59,9 @@ async function displayData(photograph) {
 	// Ajout du nom du photographe dans la modal
 	const modalSection = document.getElementById("header-modal-contact");
 	modalSection.appendChild(userCardDOM.h2NomModal);
+	//on ajoute le nombre de like au h4 correspondant
+	const h4LikesNumber=document.getElementById("likes-number");
+	h4LikesNumber.textContent=nbLikesTotal;
 }
 
 async function photopgraph() {
@@ -64,4 +70,12 @@ async function photopgraph() {
 	displayData(photograph);
 }
 
+// eslint-disable-next-line no-unused-vars
+function ajoutLikesMedias(idMedias,likes)
+{
+	const nbLikesMedias=document.getElementById(`nblikesmedias${idMedias}`);
+	nbLikesMedias.textContent=likes+1;
+}
+
 photopgraph();
+

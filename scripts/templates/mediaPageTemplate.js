@@ -32,10 +32,12 @@ function mediaPageTemplate(data) {
 		const NomMedias = document.createElement("h3");
 		NomMedias.textContent = title;
 		const NbLikesMedias = document.createElement("h4");
+		NbLikesMedias.setAttribute("id",`nblikesmedias${id}`);
 		NbLikesMedias.textContent = likes;
 		const imgCoeur = document.createElement("img");
 		imgCoeur.setAttribute("src", "assets/icons/favorite-Heart.svg");
 		imgCoeur.setAttribute("alt", "Likes");
+		imgCoeur.setAttribute("onclick", `ajoutLikesMedias(${id},${likes})`);
 
 		divTitreCoeurMedias.appendChild(NomMedias);
 		divTitreCoeurMedias.appendChild(NbLikesMedias);

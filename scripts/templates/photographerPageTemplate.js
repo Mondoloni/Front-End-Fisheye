@@ -55,10 +55,10 @@ function photographerPageTemplate(data) {
 		// Div des likes et du tarifs journalier en bas de page
 		const divLikes = document.createElement("div");
 		divLikes.setAttribute("class", "photograph_likes");
-
 		const h4LikesNbr = document.createElement("h4");
 		h4LikesNbr.setAttribute("class", "likes-number");
-		h4LikesNbr.textContent = "10000";
+		h4LikesNbr.setAttribute("id", "likes-number");
+	
 
 		const imgCoeurLikes = document.createElement("img");
 		imgCoeurLikes.setAttribute("src", "assets/icons/favorite-Heart-Black.svg");
