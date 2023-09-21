@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -10,7 +10,7 @@
   <body>
     <header>
       <a href="./index.html">
-        <img src="assets/images/logo.png" class="logo" />
+        <img src="assets/images/logo.png" class="logo" alt="Lien page accueil"/>
       </a>
     </header>
     <main id="main" aria-hidden="false">
@@ -25,29 +25,49 @@
             <h2 id="contactezmoi">Contactez-moi</h2>
           </div>
           <div class="modal-close-btn" onclick="closeModal()" id="modal-close-btn">
-            <img src="assets/icons/close.svg"  id="imgclosemodal" />
+            <img src="assets/icons/close.svg"  id="imgclosemodal" alt="closeModal"/>
           </div>
         </header>
 				<form>
 					<div>
-						<label>Prénom</label>
-						<input type="text" id="prenom" maxlength="10"/>
-            <label>Nom</label>
-						<input type="text" id="nom" maxlength="10"/>
-            <label>Email</label>
-						<input type="email" id="email" maxlength="20"/>
-            <label>Votre message</label>
-						<textarea type="text" id="message" class="modal-message" rows="20" cols="72"></textarea>
+						<label>Prénom
+						  <input type="text" id="prenom" maxlength="10"/>
+            </label>
+            <label>Nom
+						  <input type="text" id="nom" maxlength="10"/>
+            </label>
+            <label>Email
+						  <input type="email" id="email" maxlength="20"/>
+            </label>
+            <label>Votre message
+						  <textarea type="text" id="message" class="modal-message" rows="20" cols="72"></textarea>
+            </label>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>
+    <section class="section_lightbox_modal" id="section_lightbox_modal" role="dialog" aria-describedby="modalLightbox" aria-hidden="true">
+      <div id="lightbox_modal" class="lightbox_modal" >
+        <div class="lightbox-previous">
+            <img src="./assets/icons/previous_media.svg" id="previous_media" alt="previous media">
+        </div>
+        <div class="lightbox-media" id="lightbox-media">
+        </div>
+        <div class="lightbox-close-next">
+          <div class="lightbox-close-btn" onclick="closeLightbox()" id="lightbox-close-btn">
+            <img src="./assets/icons/close_lightbox.svg"  id="imgclosemodallightbox" alt="close lightbox"/>
+          </div>
+            <img src="./assets/icons/next_media.svg" id="next_media" class="next_media" alt="next media">
+        </div>
+			</div>
+    </section>
     <!-- <script src="scripts/pages/index.js"></script> -->
     <!-- <script src="scripts/templates/photographer.js"></script> -->
     <script src="/scripts/pages/page_photographer.js"></script>
     <script src="scripts/templates/photographerPageTemplate.js"></script>
     <script src="scripts/templates/mediaPageTemplate.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/utils/lightBox.js"></script>
   </body>
 </html>
