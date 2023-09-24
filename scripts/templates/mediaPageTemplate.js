@@ -3,16 +3,17 @@
 //elle retourne la card du media
 // eslint-disable-next-line no-unused-vars
 function mediaPageTemplate(data) {
-	const {photographerId, title, image, likes, video,id} = data;
+	const { photographerId, title, image, likes, video, id } = data;
 
 	let picture;
 	let media;
 	function getMediaTemplate() {
 		//On créé la div de la card
-		const div_media_title_like=document.createElement("div");
-		div_media_title_like.setAttribute("class","medias-photograph-title-like");
+		const div_media_title_like = document.createElement("div");
+		div_media_title_like.setAttribute("class", "medias-photograph-title-like");
 		//On vérifie si le media est une image ou une video pour créé la bonne balise
-		if (image == undefined) {
+		// eslint-disable-next-line no-prototype-builtins
+		if (data.hasOwnProperty("video")) {
 			picture = `assets/Sample Photos/${photographerId}/${video}`;
 			media = document.createElement("video");
 			media.setAttribute("src", picture);
@@ -32,7 +33,7 @@ function mediaPageTemplate(data) {
 		const NomMedias = document.createElement("h3");
 		NomMedias.textContent = title;
 		const NbLikesMedias = document.createElement("h4");
-		NbLikesMedias.setAttribute("id",`nblikesmedias${id}`);
+		NbLikesMedias.setAttribute("id", `nblikesmedias${id}`);
 		NbLikesMedias.textContent = likes;
 		const imgCoeur = document.createElement("img");
 		imgCoeur.setAttribute("src", "assets/icons/favorite-Heart.svg");
@@ -45,9 +46,9 @@ function mediaPageTemplate(data) {
 		div_media_title_like.appendChild(media);
 		div_media_title_like.appendChild(divTitreCoeurMedias);
 
-		return(div_media_title_like);
+		return (div_media_title_like);
 	}
 	//On retourne le lien du media et la card du media
 	return { picture, getMediaTemplate };
-	
+
 }

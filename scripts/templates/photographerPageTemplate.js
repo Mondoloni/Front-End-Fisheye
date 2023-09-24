@@ -58,7 +58,7 @@ function photographerPageTemplate(data) {
 		const h4LikesNbr = document.createElement("h4");
 		h4LikesNbr.setAttribute("class", "likes-number");
 		h4LikesNbr.setAttribute("id", "likes-number");
-	
+
 
 		const imgCoeurLikes = document.createElement("img");
 		imgCoeurLikes.setAttribute("src", "assets/icons/favorite-Heart-Black.svg");
