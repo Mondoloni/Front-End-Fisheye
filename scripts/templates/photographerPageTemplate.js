@@ -1,10 +1,10 @@
+
+//La fonction est utilisée dans un autre fichier js
 // eslint-disable-next-line no-unused-vars
 function photographerPageTemplate(data) {
-	const {
-		name, city, country, tagline, price, portrait,
-	} = data[0];
+	// console.log(data)
+	const { name, city, country, tagline, price, portrait } = data[0];
 	const picture = `assets/photographers/${portrait}`;
-
 	function getPhotographTemplate() {
 		// On créé la div contenant le nom prenom, ville, image, citation du phtographe
 		const div_photograph_name = document.createElement("div");
@@ -17,7 +17,7 @@ function photographerPageTemplate(data) {
 		tagline_photograph.textContent = tagline;
 		const img = document.createElement("img");
 		img.setAttribute("src", picture);
-		img.setAttribute("alt", name);
+		img.setAttribute("alt", city);
 
 		div_photograph_name.appendChild(id_photograph);
 		div_photograph_name.appendChild(town_photograph);
@@ -38,15 +38,28 @@ function photographerPageTemplate(data) {
 		const option_tri_popularite = document.createElement("option");
 		option_tri_popularite.setAttribute("value", "popularite");
 		option_tri_popularite.textContent = "Popularité";
+
+		// const ligne_select_tri_span = document.createElement("span");
+		// ligne_select_tri_span.setAttribute("class", "option-line");
+		// ligne_select_tri_span.textContent = "Popularité";
+
+		// option_tri_popularite.appendChild(ligne_select_tri_span);
+		// option_tri_hr.textContent = "_________";
 		const option_tri_date = document.createElement("option");
 		option_tri_date.setAttribute("value", "date");
+		// const ligne_select_tri_span2 = document.createElement("span");
+		// ligne_select_tri_span2.setAttribute("class", "option-line");
+		// ligne_select_tri_span2.textContent = "Date";
+		// option_tri_date.appendChild(ligne_select_tri_span2);
 		option_tri_date.textContent = "Date";
 		const option_tri_titre = document.createElement("option");
 		option_tri_titre.setAttribute("value", "titre");
 		option_tri_titre.textContent = "Titre";
 
 		select_tri_medias.appendChild(option_tri_popularite);
+		// select_tri_medias.appendChild(ligne_select_tri_span);
 		select_tri_medias.appendChild(option_tri_date);
+		// select_tri_medias.appendChild(ligne_select_tri_span);
 		select_tri_medias.appendChild(option_tri_titre);
 
 		label_tri_medias.appendChild(select_tri_medias);

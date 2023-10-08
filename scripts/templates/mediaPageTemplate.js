@@ -1,6 +1,8 @@
 //La fonction prend un paramètre
 //les données du medias du fichierphotographers.json 
 //elle retourne la card du media
+
+//La fonction est utilisée dans un autre fichier js
 // eslint-disable-next-line no-unused-vars
 function mediaPageTemplate(data) {
 	const { photographerId, title, image, likes, video, id } = data;
@@ -12,8 +14,7 @@ function mediaPageTemplate(data) {
 		const div_media_title_like = document.createElement("div");
 		div_media_title_like.setAttribute("class", "medias-photograph-title-like");
 		//On vérifie si le media est une image ou une video pour créé la bonne balise
-		// eslint-disable-next-line no-prototype-builtins
-		if (data.hasOwnProperty("video")) {
+		if (data.video !== undefined) {
 			picture = `assets/Sample Photos/${photographerId}/${video}`;
 			media = document.createElement("video");
 			media.setAttribute("src", picture);

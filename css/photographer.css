@@ -15,8 +15,6 @@ header img{
             height:50px;
         }
     
-
-
 .photograph-header{
     display: flex;
     flex-direction: row;
@@ -86,7 +84,7 @@ header img{
 .photograph-medias{
     display: flex;
     flex-direction: column;
-    margin:0px 100px;
+    margin:0px 100px 50px 100px;
     width :86%;
 }
 .photograph-medias a {
@@ -105,7 +103,7 @@ header img{
     }
 .photograph-medias select{
         width: 170px;
-        border-radius: 5px;
+        border-radius: 5px; 
         background: #901C1C;
         margin-left: 30px;
         color: #FFF;
@@ -114,23 +112,36 @@ header img{
         font-style: normal;
         font-weight: 700;
         line-height: normal;
+        border: none; /*Supprimez la bordure par défaut*/
+    /* border-bottom: 1px solid red; Ajoutez une bordure inférieure */
+    /* padding-bottom: 5px; */
+   
 }
-.photograph-medias option{
-                color: #FFF;
+.photograph-medias select option{
+                 /* color: #FFF;
                 font-family: DM Sans;
                 font-size: 18px;
                 font-style: normal;
                 font-weight: 700;
-                line-height: normal;
-            }
-  
-
+                line-height: normal; */
+                /* border: none; Supprimez la bordure par défaut */
+                 border-bottom: 5px solid red; /*Ajoutez une bordure inférieure*/
+                 padding: 5px; 
+            } 
+            
+hr{
+    /* margin:14px 0; */
+/* border-color: red; */
+border-top: 3px solid #FFF;
+color:#FFF;
+/* border-style: initial; */
+}
 
 .medias-photograph{
     display: flex;
     flex-direction: row;
     /* width: auto; */
-    justify-content: space-between;
+    justify-content: start;
     flex-wrap: wrap;
     margin-top:58px;
     /* padding-right:165px; */
@@ -145,6 +156,7 @@ header img{
         width: 350px;
         height: 300px;
         margin-bottom: 0px;  
+        object-fit: cover;
     }
 .medias-photograph video{
         border-radius: 5px;
@@ -369,7 +381,6 @@ form input {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid #95FFF9;
     margin:40px 86px 0px 101px;
 }
 .lightbox_modal h3{
@@ -388,6 +399,7 @@ form input {
         height:900px;
         border-radius: 5px;
         color: #C4C4C4;
+        object-fit: contain;
     }
 .lightbox-media video{
         width:1050px;

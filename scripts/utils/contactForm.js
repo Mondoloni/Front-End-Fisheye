@@ -1,12 +1,14 @@
 //Recupération de la balise modal, main et lightbox modal
 const modal = document.getElementById("contact_modal");
 const main = document.getElementById("main");
-const ligtBoxModal=document.getElementById("lightbox_modal");
+const ligtBoxModal = document.getElementById("lightbox_modal");
 
 //La fonction est utilisé au click sur le bouton Contactez-moi
+
+//La fonction est utilisée dans un autre fichier js
 // eslint-disable-next-line no-unused-vars
 function displayModal() {
-	
+
 	const inputprenom = document.getElementById("prenom");
 	//On modifie l'attribut aria-hidden a faux pour la modal contact
 	//et a vrai pour la modal Lightbox et la page principale
@@ -15,13 +17,13 @@ function displayModal() {
 	ligtBoxModal.setAttribute("aria-hidden", "true");
 	//On affiche la modal contact et on cahe la modal LightBox
 	modal.style.display = "block";
-	ligtBoxModal.display="none";
+	ligtBoxModal.display = "none";
 	//On met le focus sur le champ prenom
 	inputprenom.focus();
 }
 
 function closeModal() {
-//La fonction est utilisé au click sur le bouton fermé X de la modal
+	//La fonction est utilisé au click sur le bouton fermé X de la modal
 	//On modifie l'attribut aria-hidden a vrai pour la modal contact
 	//et a faux pour la modal Lightbox et la page principale
 	modal.setAttribute("aria-hidden", "true");
@@ -47,9 +49,9 @@ form.addEventListener("submit", (event) => {
 	// Test si tous les champs sont valides à l'aide de fonction
 	if (
 		validerChampCivilite("prenom", "Prénom")
-    && validerChampCivilite("nom", "Nom")
-    && validerEmail("email")
-    && validerChampMessage("message", "Message")
+		&& validerChampCivilite("nom", "Nom")
+		&& validerEmail("email")
+		&& validerChampMessage("message", "Message")
 	) {
 		console.log(document.getElementById("prenom").value);
 		console.log(document.getElementById("nom").value);
