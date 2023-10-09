@@ -70,6 +70,8 @@ async function displayData(photograph) {
 function ajoutLikesMedias(idMedias, likes) {
 	const nbLikesMedias = document.getElementById(`nblikesmedias${idMedias}`);
 	nbLikesMedias.textContent = likes + 1;
+	const nbTotalLikesMedias = document.getElementById("likes-number");
+	nbTotalLikesMedias.textContent = parseInt(nbTotalLikesMedias.innerText) + 1;
 }
 
 async function changeTriMedias() {
