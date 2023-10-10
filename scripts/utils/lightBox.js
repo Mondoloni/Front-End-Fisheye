@@ -9,6 +9,7 @@ const lightbox_btn_close = document.getElementById("imgclosemodal");
 //La fonction est utilisée dans un autre fichier js
 // eslint-disable-next-line no-unused-vars
 async function displayLightBox(idMedias, photographerId) {
+
 	//On modifie l'attribut aria-hidden a vrai pour la modal lightbox
 	//et faux pour la modal contact et la page principale
 	contactModal.setAttribute("aria-hidden", "true");
@@ -24,6 +25,7 @@ async function displayLightBox(idMedias, photographerId) {
 	//La fonction est définie dans un autre fichier js
 	// eslint-disable-next-line no-undef
 	const recupData = await recuperationData("./data/photographers.json");
+
 	// const response = await fetch("./data/photographers.json");
 	//On vérifié si l'on accède bien au fichier
 	if (recupData.reponse.ok) {
@@ -44,7 +46,12 @@ async function displayLightBox(idMedias, photographerId) {
 		const divLightboxMedia = document.getElementById("lightbox-media");
 		const imgNextMedia = document.getElementById("next_media");
 		const imgPreviousMedia = document.getElementById("previous_media");
-
+		console.log("MediaDisplay")
+		console.log(MediaDisplay)
+		console.log("idMedias")
+		console.log(idMedias)
+		console.log("MediaToPhotograp")
+		console.log(MediaToPhotograp)
 
 		let mediaLightBox;
 		let picture;

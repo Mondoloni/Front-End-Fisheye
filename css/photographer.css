@@ -141,14 +141,14 @@ color:#FFF;
     display: flex;
     flex-direction: row;
     /* width: auto; */
-    justify-content: start;
+    justify-content: space-between;
     flex-wrap: wrap;
     margin-top:58px;
     /* padding-right:165px; */
 }
 .medias-photograph .medias-photograph-title-like{
         margin-bottom:30px;
-        margin-right: 80px;
+        margin-right: 5px;
         /* margin-left:40px; */
     }
 .medias-photograph img {

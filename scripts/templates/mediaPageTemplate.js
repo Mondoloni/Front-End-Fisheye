@@ -19,11 +19,15 @@ function mediaPageTemplate(data) {
 			media = document.createElement("video");
 			media.setAttribute("src", picture);
 			media.setAttribute("alt", title);
+			media.setAttribute("tabindex", "0");
+			media.setAttribute("id", id);
 		} else {
 			picture = `assets/Sample Photos/${photographerId}/${image}`;
 			media = document.createElement("img");
 			media.setAttribute("src", picture);
 			media.setAttribute("alt", title);
+			media.setAttribute("tabindex", "0");
+			media.setAttribute("id", id);
 		}
 		//On créé l'evenement sur le clique du media pour ouvrir la modal LightBox
 		media.setAttribute("onclick", `displayLightBox(${id},${photographerId})`);

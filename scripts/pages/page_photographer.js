@@ -1,8 +1,10 @@
+//Recupération du parametre id de l'URL qui correspond à l'id du photographe
+const params = new URL(document.location).searchParams;
+const idToFetch = Number(params.get("id"));
+
 async function getPhotographerById() {
 	const photograph = [];
-	//Recupération du parametre id de l'URL qui correspond à l'id du photographe
-	const params = new URL(document.location).searchParams;
-	const idToFetch = Number(params.get("id"));
+
 
 	//La fonction est définie dans un autre fichier js
 	// eslint-disable-next-line no-undef
@@ -101,6 +103,8 @@ async function changeTriMedias() {
 
 }
 async function photopgraph() {
+
+	// import { displayLightBox } from "./utils/lightBox.js";
 	// Récupère les datas des photographes et de ces medias
 	const { photograph } = await getPhotographerById();
 	//On appel la fonction displayData pour créé les cards des médias
@@ -108,6 +112,18 @@ async function photopgraph() {
 	//On ajoute un listener sur le select du tri
 	//A chaque chagement on appel la fonction changerTrimedias
 	document.getElementById("tri_medias").addEventListener("change", changeTriMedias);
+
+	document.addEventListener("keydown", (e) => {
+		const modal = document.getElementById("section_lightbox_modal");
+
+		//Pour chaque clique sur la touche entrée si la modale lightbox n'est pas ouverte
+		//on appel la fonction displayLightBox (ouverture de la lightBox)
+		const keyCode = e.keyCode ? e.keyCode : e.which;
+		if (modal.getAttribute("aria-hidden") == "true" && keyCode === 13) {
+			displayLightBox(parseInt(e.target.id), idToFetch);
+			parseInt
+		}
+	});
 }
 photopgraph();
 
