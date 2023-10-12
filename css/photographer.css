@@ -171,7 +171,8 @@ color:#FFF;
     display: flex;
     flex-direction: row;
     align-items: center;
-    height:31px;
+    /* height:31px; */
+    height:auto;
 }
 .titre_coeur_medias h3{
         color: #901C1C;
@@ -243,8 +244,17 @@ color:#FFF;
 }
 
 /* Modal de contact */
-#contact_modal {
+.contact_modal {
     display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 669px;
+
+ 
 }
 .modal {
     width: 669px;
@@ -257,10 +267,14 @@ color:#FFF;
     align-items: center;
     justify-content: space-between;
     padding: 15px 35px 35px 35px;
-    margin: auto;
-    position:absolute;
-    top:70px;
-    left:390px;
+   
+    
+    /* position:absolute; */
+    /* top:10px; */
+    /* left:auto; */
+    /* text-align: center; */
+    
+  /* top:10px; */
 }
 
 .modal header {

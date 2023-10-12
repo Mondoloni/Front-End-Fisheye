@@ -30,7 +30,6 @@ function closeModal() {
 	main.setAttribute("aria-hidden", "false");
 	//On masque la modal Contact
 	modal.style.display = "none";
-	console.log("test")
 }
 
 // On écoute l'appui de la touche echap et on lance la fonction closeModal()

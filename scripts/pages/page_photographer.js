@@ -114,15 +114,22 @@ async function photopgraph() {
 	document.getElementById("tri_medias").addEventListener("change", changeTriMedias);
 
 	document.addEventListener("keydown", (e) => {
-		const modal = document.getElementById("section_lightbox_modal");
+		// const modal = document.getElementById("section_lightbox_modal");
 
 		//Pour chaque clique sur la touche entrée si la modale lightbox n'est pas ouverte
 		//on appel la fonction displayLightBox (ouverture de la lightBox)
 		const keyCode = e.keyCode ? e.keyCode : e.which;
-		if (modal.getAttribute("aria-hidden") == "true" && keyCode === 13) {
-			displayLightBox(parseInt(e.target.id), idToFetch);
-			parseInt
+		if (keyCode === 13) {
+			if (e.target.id === "contact_button") {
+				console.log("Okkkkk")
+			}
+			else {
+				//La fonction est définie dans un autre fichier js
+				// eslint-disable-next-line no-undef
+				displayLightBox(parseInt(e.target.id), idToFetch);
+			}
 		}
+
 	});
 }
 photopgraph();

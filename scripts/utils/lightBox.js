@@ -46,12 +46,6 @@ async function displayLightBox(idMedias, photographerId) {
 		const divLightboxMedia = document.getElementById("lightbox-media");
 		const imgNextMedia = document.getElementById("next_media");
 		const imgPreviousMedia = document.getElementById("previous_media");
-		console.log("MediaDisplay")
-		console.log(MediaDisplay)
-		console.log("idMedias")
-		console.log(idMedias)
-		console.log("MediaToPhotograp")
-		console.log(MediaToPhotograp)
 
 		let mediaLightBox;
 		let picture;
