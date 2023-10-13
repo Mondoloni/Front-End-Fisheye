@@ -5,7 +5,6 @@ const idToFetch = Number(params.get("id"));
 async function getPhotographerById() {
 	const photograph = [];
 
-
 	//La fonction est définie dans un autre fichier js
 	// eslint-disable-next-line no-undef
 	const recupData = await recuperationData("./data/photographers.json");
@@ -67,6 +66,8 @@ async function displayData(photograph) {
 	h4LikesNumber.textContent = nbLikesTotal;
 }
 
+//La fonction permet l'incrementation du nombre de like sur le média et l'incrementation du nombre total de likes
+//Elle prend 2 paramètres : L'id du média selectionne et le nombre de likes du média
 //La fonction est utilisée dans un autre fichier js
 // eslint-disable-next-line no-unused-vars
 function ajoutLikesMedias(idMedias, likes) {
@@ -85,12 +86,12 @@ async function changeTriMedias() {
 	divMedia.innerHTML = "";
 	//En fonction du select choisi on tri le tableau des medias
 	switch (typeTri.value) {
-		case "popularite": photograph[1].sort((a, b) => b.likes - a.likes);
-			break;
-		case "date": photograph[1].sort((a, b) => new Date(a.date) - new Date(b.date));
-			break;
-		case "titre": photograph[1].sort((a, b) => a.title.localeCompare(b.title));
-			break;
+	case "popularite": photograph[1].sort((a, b) => b.likes - a.likes);
+		break;
+	case "date": photograph[1].sort((a, b) => new Date(a.date) - new Date(b.date));
+		break;
+	case "titre": photograph[1].sort((a, b) => a.title.localeCompare(b.title));
+		break;
 	}
 	//On parcours la liste des medias et on appel les fonctions qui créént et ajoutent les cards des medias
 	photograph[1].forEach((medias) => {
@@ -104,7 +105,6 @@ async function changeTriMedias() {
 }
 async function photopgraph() {
 
-	// import { displayLightBox } from "./utils/lightBox.js";
 	// Récupère les datas des photographes et de ces medias
 	const { photograph } = await getPhotographerById();
 	//On appel la fonction displayData pour créé les cards des médias
@@ -114,19 +114,23 @@ async function photopgraph() {
 	document.getElementById("tri_medias").addEventListener("change", changeTriMedias);
 
 	document.addEventListener("keydown", (e) => {
-		// const modal = document.getElementById("section_lightbox_modal");
 
-		//Pour chaque clique sur la touche entrée si la modale lightbox n'est pas ouverte
-		//on appel la fonction displayLightBox (ouverture de la lightBox)
+		//Pour chaque clique sur la touche entrée 
 		const keyCode = e.keyCode ? e.keyCode : e.which;
 		if (keyCode === 13) {
-			if (e.target.id === "contact_button") {
-				console.log("Okkkkk")
-			}
-			else {
-				//La fonction est définie dans un autre fichier js
+		//si l'action est effectué sur un média
+		//on appel la fonction displayLightBox (ouverture de la lightBox)
+			if (e.target.dataset.type === "media") {
 				// eslint-disable-next-line no-undef
-				displayLightBox(parseInt(e.target.id), idToFetch);
+				displayLightBox(parseInt(e.target.dataset.mediaid), parseInt(e.target.dataset.photographerid));
+			}
+			//si l'action est effectué sur un like d'un média
+			//on appel la fonction ajoutLikesMedias (ajout d'un like sur le média)
+			else  if (e.target.dataset.type === "likes")
+			{
+				//La fonction est définie dans un autre fichier js
+				ajoutLikesMedias(parseInt(e.target.dataset.mediaid),parseInt(e.target.dataset.likes))
+				
 			}
 		}
 

@@ -15,19 +15,23 @@ function mediaPageTemplate(data) {
 		div_media_title_like.setAttribute("class", "medias-photograph-title-like");
 		//On vérifie si le media est une image ou une video pour créé la bonne balise
 		if (data.video !== undefined) {
-			picture = `assets/Sample Photos/${photographerId}/${video}`;
+			picture = `assets/Sample_Photos/${photographerId}/${video}`;
 			media = document.createElement("video");
 			media.setAttribute("src", picture);
-			media.setAttribute("alt", title);
+			// media.setAttribute("alt", title);
 			media.setAttribute("tabindex", "0");
-			media.setAttribute("id", id);
+			media.setAttribute("data-type", "media");
+			media.setAttribute("data-mediaid", id);
+			media.setAttribute("data-photographerId", photographerId);
 		} else {
-			picture = `assets/Sample Photos/${photographerId}/${image}`;
+			picture = `assets/Sample_Photos/${photographerId}/${image}`;
 			media = document.createElement("img");
 			media.setAttribute("src", picture);
 			media.setAttribute("alt", title);
 			media.setAttribute("tabindex", "0");
-			media.setAttribute("id", id);
+			media.setAttribute("data-type", "media");
+			media.setAttribute("data-mediaid", id);
+			media.setAttribute("data-photographerId", photographerId);
 		}
 		//On créé l'evenement sur le clique du media pour ouvrir la modal LightBox
 		media.setAttribute("onclick", `displayLightBox(${id},${photographerId})`);
@@ -43,6 +47,10 @@ function mediaPageTemplate(data) {
 		const imgCoeur = document.createElement("img");
 		imgCoeur.setAttribute("src", "assets/icons/favorite-Heart.svg");
 		imgCoeur.setAttribute("alt", "Likes");
+		imgCoeur.setAttribute("data-type", "likes");
+		imgCoeur.setAttribute("data-mediaid", id);
+		imgCoeur.setAttribute("data-likes", likes);
+		imgCoeur.setAttribute("tabindex", "0");
 		imgCoeur.setAttribute("onclick", `ajoutLikesMedias(${id},${likes})`);
 
 		divTitreCoeurMedias.appendChild(NomMedias);

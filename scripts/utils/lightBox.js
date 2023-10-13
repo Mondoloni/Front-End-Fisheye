@@ -34,12 +34,12 @@ async function displayLightBox(idMedias, photographerId) {
 		const MediaToPhotograp = recupData.data.media.filter((medias) => medias.photographerId === photographerId);
 		const typeTri = document.getElementById("tri_medias");
 		switch (typeTri.value) {
-			case "popularite": MediaToPhotograp.sort((a, b) => b.likes - a.likes);
-				break;
-			case "date": MediaToPhotograp.sort((a, b) => new Date(a.date) - new Date(b.date));
-				break;
-			case "titre": MediaToPhotograp.sort((a, b) => a.title.localeCompare(b.title));
-				break;
+		case "popularite": MediaToPhotograp.sort((a, b) => b.likes - a.likes);
+			break;
+		case "date": MediaToPhotograp.sort((a, b) => new Date(a.date) - new Date(b.date));
+			break;
+		case "titre": MediaToPhotograp.sort((a, b) => a.title.localeCompare(b.title));
+			break;
 		}
 		//On récupére les données des medias du photographe 
 		const MediaDisplay = MediaToPhotograp.filter((medias) => medias.id === idMedias);
@@ -60,12 +60,12 @@ async function displayLightBox(idMedias, photographerId) {
 		/* On vérifie si le media a affiche est une image ou une video*/
 		/* On créé soit une balise video soit une balise img */
 		if (MediaDisplay[0].image == undefined) {
-			picture = `assets/Sample Photos/${photographerId}/${MediaDisplay[0].video}`;
+			picture = `assets/Sample_Photos/${photographerId}/${MediaDisplay[0].video}`;
 			mediaLightBox = document.createElement("video");
 			mediaLightBox.setAttribute("src", picture);
-			mediaLightBox.setAttribute("alt", MediaDisplay[0].title);
+			// mediaLightBox.setAttribute("alt", MediaDisplay[0].title);
 		} else {
-			picture = `assets/Sample Photos/${photographerId}/${MediaDisplay[0].image}`;
+			picture = `assets/Sample_Photos/${photographerId}/${MediaDisplay[0].image}`;
 			mediaLightBox = document.createElement("img");
 			mediaLightBox.setAttribute("src", picture);
 			mediaLightBox.setAttribute("alt", MediaDisplay[0].title);
@@ -148,16 +148,15 @@ async function afficherMediaSuivant(idMedias, photographerId) {
 	let previousMedia = null;
 
 	if (recupData.reponse.ok) {
-		// const data = await response.json();
 		const MediaToPhotograp = recupData.data.media.filter((medias) => medias.photographerId === photographerId);
 		const typeTri = document.getElementById("tri_medias");
 		switch (typeTri.value) {
-			case "popularite": MediaToPhotograp.sort((a, b) => b.likes - a.likes);
-				break;
-			case "date": MediaToPhotograp.sort((a, b) => new Date(a.date) - new Date(b.date));
-				break;
-			case "titre": MediaToPhotograp.sort((a, b) => a.title.localeCompare(b.title));
-				break;
+		case "popularite": MediaToPhotograp.sort((a, b) => b.likes - a.likes);
+			break;
+		case "date": MediaToPhotograp.sort((a, b) => new Date(a.date) - new Date(b.date));
+			break;
+		case "titre": MediaToPhotograp.sort((a, b) => a.title.localeCompare(b.title));
+			break;
 		}
 		const MediaDisplay = MediaToPhotograp.filter((medias) => medias.id === idMedias);
 		const titleLightBox = document.getElementById("titleLightBox");
@@ -168,7 +167,7 @@ async function afficherMediaSuivant(idMedias, photographerId) {
 		/*On identifie si le media precedement affiché et le nouveau media sont de meme type*/
 		if (mediaLightBox.tagName === "IMG") {
 			if (MediaDisplay[0].image !== undefined) {
-				mediaLightBox.setAttribute("src", `assets/Sample Photos/${photographerId}/${MediaDisplay[0].image}`);
+				mediaLightBox.setAttribute("src", `assets/Sample_Photos/${photographerId}/${MediaDisplay[0].image}`);
 				mediaLightBox.setAttribute("alt", MediaDisplay[0].title);
 			}
 			else {
@@ -177,8 +176,7 @@ async function afficherMediaSuivant(idMedias, photographerId) {
 				divLightboxMedia.removeChild(document.getElementById("mediaLightBox"));
 				divLightboxMedia.removeChild(document.getElementById("titleLightBox"));
 				newMediaLightBox = document.createElement("video");
-				newMediaLightBox.setAttribute("src", `assets/Sample Photos/${photographerId}/${MediaDisplay[0].video}`);
-				newMediaLightBox.setAttribute("alt", MediaDisplay[0].title);
+				newMediaLightBox.setAttribute("src", `assets/Sample_Photos/${photographerId}/${MediaDisplay[0].video}`);
 				newMediaLightBox.setAttribute("id", "mediaLightBox");
 				newTitleLightBox = document.createElement("h3");
 				newTitleLightBox.textContent = MediaDisplay[0].title;
@@ -195,7 +193,7 @@ async function afficherMediaSuivant(idMedias, photographerId) {
 				divLightboxMedia.removeChild(document.getElementById("mediaLightBox"));
 				divLightboxMedia.removeChild(document.getElementById("titleLightBox"));
 				newMediaLightBox = document.createElement("img");
-				newMediaLightBox.setAttribute("src", `assets/Sample Photos/${photographerId}/${MediaDisplay[0].image}`);
+				newMediaLightBox.setAttribute("src", `assets/Sample_Photos/${photographerId}/${MediaDisplay[0].image}`);
 				newMediaLightBox.setAttribute("alt", MediaDisplay[0].title);
 				newMediaLightBox.setAttribute("id", "mediaLightBox");
 				newTitleLightBox = document.createElement("h3");
@@ -206,8 +204,7 @@ async function afficherMediaSuivant(idMedias, photographerId) {
 				divLightboxMedia.appendChild(newTitleLightBox);
 			}
 			else {
-				mediaLightBox.setAttribute("src", `assets/Sample Photos/${photographerId}/${MediaDisplay[0].video}`);
-				mediaLightBox.setAttribute("alt", MediaDisplay[0].title);
+				mediaLightBox.setAttribute("src", `assets/Sample_Photos/${photographerId}/${MediaDisplay[0].video}`);
 			}
 		}
 		//On parcours les medias
@@ -244,9 +241,6 @@ async function afficherMediaSuivant(idMedias, photographerId) {
 //La fonction est utilisée dans un autre fichier js
 // eslint-disable-next-line no-unused-vars
 async function afficherMediaPrecedent(idMedias, photographerId) {
-
-	// const response = await fetch("./data/photographers.json");
-
 	//La fonction est définie dans un autre fichier js
 	// eslint-disable-next-line no-undef
 	const recupData = await recuperationData("./data/photographers.json");
@@ -257,16 +251,15 @@ async function afficherMediaPrecedent(idMedias, photographerId) {
 	let previousMedia = null;
 
 	if (recupData.reponse.ok) {
-		// const data = await response.json();
 		const MediaToPhotograp = recupData.data.media.filter((medias) => medias.photographerId === photographerId);
 		const typeTri = document.getElementById("tri_medias");
 		switch (typeTri.value) {
-			case "popularite": MediaToPhotograp.sort((a, b) => b.likes - a.likes);
-				break;
-			case "date": MediaToPhotograp.sort((a, b) => new Date(a.date) - new Date(b.date));
-				break;
-			case "titre": MediaToPhotograp.sort((a, b) => a.title.localeCompare(b.title));
-				break;
+		case "popularite": MediaToPhotograp.sort((a, b) => b.likes - a.likes);
+			break;
+		case "date": MediaToPhotograp.sort((a, b) => new Date(a.date) - new Date(b.date));
+			break;
+		case "titre": MediaToPhotograp.sort((a, b) => a.title.localeCompare(b.title));
+			break;
 		}
 		const MediaDisplay = MediaToPhotograp.filter((medias) => medias.id === idMedias);
 		const titleLightBox = document.getElementById("titleLightBox");
@@ -277,7 +270,7 @@ async function afficherMediaPrecedent(idMedias, photographerId) {
 		/*On identifie si le media precedement affiché et le nouveau media sont de meme type*/
 		if (mediaLightBox.tagName === "IMG") {
 			if (MediaDisplay[0].image !== undefined) {
-				mediaLightBox.setAttribute("src", `assets/Sample Photos/${photographerId}/${MediaDisplay[0].image}`);
+				mediaLightBox.setAttribute("src", `assets/Sample_Photos/${photographerId}/${MediaDisplay[0].image}`);
 				mediaLightBox.setAttribute("alt", MediaDisplay[0].title);
 			}
 			else {
@@ -286,8 +279,7 @@ async function afficherMediaPrecedent(idMedias, photographerId) {
 				divLightboxMedia.removeChild(document.getElementById("mediaLightBox"));
 				divLightboxMedia.removeChild(document.getElementById("titleLightBox"));
 				newMediaLightBox = document.createElement("video");
-				newMediaLightBox.setAttribute("src", `assets/Sample Photos/${photographerId}/${MediaDisplay[0].video}`);
-				newMediaLightBox.setAttribute("alt", MediaDisplay[0].title);
+				newMediaLightBox.setAttribute("src", `assets/Sample_Photos/${photographerId}/${MediaDisplay[0].video}`);
 				newMediaLightBox.setAttribute("id", "mediaLightBox");
 				newTitleLightBox = document.createElement("h3");
 				newTitleLightBox.textContent = MediaDisplay[0].title;
@@ -304,7 +296,7 @@ async function afficherMediaPrecedent(idMedias, photographerId) {
 				divLightboxMedia.removeChild(document.getElementById("mediaLightBox"));
 				divLightboxMedia.removeChild(document.getElementById("titleLightBox"));
 				newMediaLightBox = document.createElement("img");
-				newMediaLightBox.setAttribute("src", `assets/Sample Photos/${photographerId}/${MediaDisplay[0].image}`);
+				newMediaLightBox.setAttribute("src", `assets/Sample_Photos/${photographerId}/${MediaDisplay[0].image}`);
 				newMediaLightBox.setAttribute("alt", MediaDisplay[0].title);
 				newMediaLightBox.setAttribute("id", "mediaLightBox");
 				newTitleLightBox = document.createElement("h3");
@@ -315,8 +307,7 @@ async function afficherMediaPrecedent(idMedias, photographerId) {
 				divLightboxMedia.appendChild(newTitleLightBox);
 			}
 			else {
-				mediaLightBox.setAttribute("src", `assets/Sample Photos/${photographerId}/${MediaDisplay[0].video}`);
-				mediaLightBox.setAttribute("alt", MediaDisplay[0].title);
+				mediaLightBox.setAttribute("src", `assets/Sample_Photos/${photographerId}/${MediaDisplay[0].video}`);
 			}
 		}
 
@@ -350,12 +341,12 @@ document.addEventListener("keydown", (e) => {
 	const keyCode = e.keyCode ? e.keyCode : e.which;
 	if (section_lightbox_modal.getAttribute("aria-hidden") == "false") {
 		switch (keyCode) {
-			case 27: closeLightbox();//Si l'appui est sur echape on ferme la modal
-				break;
-			case 39: eval(mediaSuivant);//si l'appui clavier est sur la fleche droite on lance la fonction afficherMediaSuivant
-				break;
-			case 37: eval(mediaPrecedent);//si l'appui clavier est sur la fleche gauche on lance la fonction afficherMediaPrecedent
-				break;
+		case 27: closeLightbox();//Si l'appui est sur echape on ferme la modal
+			break;
+		case 39: eval(mediaSuivant);//si l'appui clavier est sur la fleche droite on lance la fonction afficherMediaSuivant
+			break;
+		case 37: eval(mediaPrecedent);//si l'appui clavier est sur la fleche gauche on lance la fonction afficherMediaPrecedent
+			break;
 		}
 	}
 });
