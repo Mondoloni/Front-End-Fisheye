@@ -5,18 +5,32 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
     <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
       <a href="./index.html" class="lien" aria-label="Fisheye Home page" target="_self">
-        <img src="assets/images/logo.png" class="logo" alt="Home page logo">  
+        <img src="assets/images/logo.png" class="logo" alt="Home page logo" >  
       </a>
     </header>
     <main id="main" aria-hidden="false">
       <div class="photograph-header">
-        <button class="contact_button" id="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" id="contact_button" onclick="displayModal()" >Contactez-moi</button>
       </div>
+
+            <!-- <div class="custom-select">
+              <select>
+                <option value="">Open this select menu</option>
+                <option value="">GitHub</option>
+                <hr>
+                <option value="">Instagram</option>
+                <option value="">Facebook</option>
+                <option value="">LinkedIn</option>
+                <option value="">Twitter</option>
+                <option value="">Reddit</option>
+              </select>
+            </div> -->
     </main>
     <div id="contact_modal" role="dialog" aria-describedby="contact_modal" aria-hidden="true" class="contact_modal">
 			<div class="modal">

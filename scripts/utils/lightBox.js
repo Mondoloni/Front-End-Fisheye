@@ -9,7 +9,6 @@ const lightbox_btn_close = document.getElementById("imgclosemodal");
 //La fonction est utilisée dans un autre fichier js
 // eslint-disable-next-line no-unused-vars
 async function displayLightBox(idMedias, photographerId) {
-
 	//On modifie l'attribut aria-hidden a vrai pour la modal lightbox
 	//et faux pour la modal contact et la page principale
 	contactModal.setAttribute("aria-hidden", "true");
@@ -32,13 +31,13 @@ async function displayLightBox(idMedias, photographerId) {
 		// const data = await response.json();
 		//On récupére les données du photographe 
 		const MediaToPhotograp = recupData.data.media.filter((medias) => medias.photographerId === photographerId);
-		const typeTri = document.getElementById("tri_medias");
-		switch (typeTri.value) {
-		case "popularite": MediaToPhotograp.sort((a, b) => b.likes - a.likes);
+		const typeTri = document.getElementById("selected-value");
+		switch (typeTri.innerHTML) {
+		case "Popularité": MediaToPhotograp.sort((a, b) => b.likes - a.likes);	
 			break;
-		case "date": MediaToPhotograp.sort((a, b) => new Date(a.date) - new Date(b.date));
+		case "Date": MediaToPhotograp.sort((a, b) => new Date(a.date) - new Date(b.date));
 			break;
-		case "titre": MediaToPhotograp.sort((a, b) => a.title.localeCompare(b.title));
+		case "Titre": MediaToPhotograp.sort((a, b) => a.title.localeCompare(b.title));
 			break;
 		}
 		//On récupére les données des medias du photographe 
@@ -149,13 +148,13 @@ async function afficherMediaSuivant(idMedias, photographerId) {
 
 	if (recupData.reponse.ok) {
 		const MediaToPhotograp = recupData.data.media.filter((medias) => medias.photographerId === photographerId);
-		const typeTri = document.getElementById("tri_medias");
-		switch (typeTri.value) {
-		case "popularite": MediaToPhotograp.sort((a, b) => b.likes - a.likes);
+		const typeTri = document.getElementById("selected-value");
+		switch (typeTri.innerHTML) {
+		case "Popularité": MediaToPhotograp.sort((a, b) => b.likes - a.likes);
 			break;
-		case "date": MediaToPhotograp.sort((a, b) => new Date(a.date) - new Date(b.date));
+		case "Date": MediaToPhotograp.sort((a, b) => new Date(a.date) - new Date(b.date));
 			break;
-		case "titre": MediaToPhotograp.sort((a, b) => a.title.localeCompare(b.title));
+		case "Titre": MediaToPhotograp.sort((a, b) => a.title.localeCompare(b.title));
 			break;
 		}
 		const MediaDisplay = MediaToPhotograp.filter((medias) => medias.id === idMedias);
@@ -252,13 +251,13 @@ async function afficherMediaPrecedent(idMedias, photographerId) {
 
 	if (recupData.reponse.ok) {
 		const MediaToPhotograp = recupData.data.media.filter((medias) => medias.photographerId === photographerId);
-		const typeTri = document.getElementById("tri_medias");
-		switch (typeTri.value) {
-		case "popularite": MediaToPhotograp.sort((a, b) => b.likes - a.likes);
+		const typeTri = document.getElementById("selected-value");
+		switch (typeTri.innerHTML) {
+		case "Popularité": MediaToPhotograp.sort((a, b) => b.likes - a.likes);
 			break;
-		case "date": MediaToPhotograp.sort((a, b) => new Date(a.date) - new Date(b.date));
+		case "Date": MediaToPhotograp.sort((a, b) => new Date(a.date) - new Date(b.date));
 			break;
-		case "titre": MediaToPhotograp.sort((a, b) => a.title.localeCompare(b.title));
+		case "Titre": MediaToPhotograp.sort((a, b) => a.title.localeCompare(b.title));
 			break;
 		}
 		const MediaDisplay = MediaToPhotograp.filter((medias) => medias.id === idMedias);

@@ -1,10 +1,10 @@
 //Recupération du parametre id de l'URL qui correspond à l'id du photographe
 const params = new URL(document.location).searchParams;
 const idToFetch = Number(params.get("id"));
+let nbLikesTotal = 0;
 
 async function getPhotographerById() {
 	const photograph = [];
-
 	//La fonction est définie dans un autre fichier js
 	// eslint-disable-next-line no-undef
 	const recupData = await recuperationData("./data/photographers.json");
@@ -22,7 +22,7 @@ async function getPhotographerById() {
 }
 
 async function displayData(photograph) {
-	let nbLikesTotal = 0;
+	// let nbLikesTotal = 0;
 	const photographersSection = document.querySelector(".photograph-header");
 	//On passe en paramètre au template de la page photograph les données liées au photographe
 	// qui ont été retourné par la fonction getPhotographerById
@@ -71,27 +71,42 @@ async function displayData(photograph) {
 //La fonction est utilisée dans un autre fichier js
 // eslint-disable-next-line no-unused-vars
 function ajoutLikesMedias(idMedias, likes) {
+	
 	const nbLikesMedias = document.getElementById(`nblikesmedias${idMedias}`);
-	nbLikesMedias.textContent = likes + 1;
-	const nbTotalLikesMedias = document.getElementById("likes-number");
-	nbTotalLikesMedias.textContent = parseInt(nbTotalLikesMedias.innerText) + 1;
+	
+	if(parseInt(nbLikesMedias.innerHTML)<(likes+1))
+	{
+		nbLikesMedias.textContent = likes + 1;
+		const nbTotalLikesMedias = document.getElementById("likes-number");
+		nbTotalLikesMedias.textContent = parseInt(nbTotalLikesMedias.innerText)+1 ;
+	}
+	else
+	{
+		nbLikesMedias.textContent = parseInt(nbLikesMedias.textContent)- 1;
+		const nbTotalLikesMedias = document.getElementById("likes-number");
+		nbTotalLikesMedias.textContent = parseInt(nbTotalLikesMedias.innerText)-1 ;
+	}
+	
 }
 
 async function changeTriMedias() {
 	// Récupère les datas des photographes
 	const { photograph } = await getPhotographerById();
-	const typeTri = document.getElementById("tri_medias");
+	// const typeTri = document.getElementById("tri_medias");
+	const typeTri = document.getElementById("selected-value");
 	const divMedia = document.getElementById("medias-photograph");
+
 	//Vidage des cards medias
 	divMedia.innerHTML = "";
 	//En fonction du select choisi on tri le tableau des medias
-	switch (typeTri.value) {
-	case "popularite": photograph[1].sort((a, b) => b.likes - a.likes);
+	switch (typeTri.innerHTML) {
+	case "Popularité": photograph[1].sort((a, b) => b.likes - a.likes);
 		break;
-	case "date": photograph[1].sort((a, b) => new Date(a.date) - new Date(b.date));
+	case "Date": photograph[1].sort((a, b) => new Date(a.date) - new Date(b.date));
 		break;
-	case "titre": photograph[1].sort((a, b) => a.title.localeCompare(b.title));
-		break;
+	case "Titre": photograph[1].sort((a, b) => a.title.localeCompare(b.title));
+		
+	break;
 	}
 	//On parcours la liste des medias et on appel les fonctions qui créént et ajoutent les cards des medias
 	photograph[1].forEach((medias) => {
@@ -103,18 +118,17 @@ async function changeTriMedias() {
 	});
 
 }
-async function photopgraph() {
-
+async function photopgraph() 
+{
 	// Récupère les datas des photographes et de ces medias
 	const { photograph } = await getPhotographerById();
 	//On appel la fonction displayData pour créé les cards des médias
 	displayData(photograph);
-	//On ajoute un listener sur le select du tri
+	//On ajoute un listener sur le dropdown du tri des medias
 	//A chaque chagement on appel la fonction changerTrimedias
-	document.getElementById("tri_medias").addEventListener("change", changeTriMedias);
-
+	document.getElementById("select-dropdown").addEventListener("change", changeTriMedias);
+	
 	document.addEventListener("keydown", (e) => {
-
 		//Pour chaque clique sur la touche entrée 
 		const keyCode = e.keyCode ? e.keyCode : e.which;
 		if (keyCode === 13) {
@@ -134,6 +148,45 @@ async function photopgraph() {
 			}
 		}
 
+	});
+
+	const customSelect = document.querySelector(".custom-select");
+	const selectBtn = document.querySelector(".select-button");
+	
+	//On ajoute un listener sur le clicke du dropdown du tri des medias
+	selectBtn.addEventListener("click", () => 
+	{
+		//Ajout/retrait de la classe custom-select.active 
+		customSelect.classList.toggle("active");
+		//Mise à jour de l'attribut aria-expanded en fonction de son statut
+		selectBtn.setAttribute(
+			"aria-expanded",
+			selectBtn.getAttribute("aria-expanded") === "true" ? "false" : "true"
+		);
+	});	
+
+	const selectedValue = document.querySelector(".selected-value");
+	const optionsList = document.querySelectorAll(".select-dropdown li");
+	
+	optionsList.forEach((option) => {
+		function changedropdown(e) {
+			//Si l'evenement est un clique on modifie la valeur affiché dans le selected value
+			//et on ferme le dropdown
+		if (e.type === "click" && e.clientX !== 0 && e.clientY !== 0) {
+			selectedValue.textContent = this.children[1].textContent;
+			customSelect.classList.remove("active");
+		}
+		//Si l'evenement est la touche entrée on modifie la valeur affiché dans le selected value
+		//et on ferme le dropdown
+		if (e.key === "Enter") {
+			selectedValue.textContent = this.textContent;
+			customSelect.classList.remove("active");
+		}
+		}
+		//Ajout d'un écouteur au clique et a l'action sur le clavier sur les balises <li> du dropdown
+		//Au declenchement de l'ecouteur on execute la fonction changedropdown
+		option.addEventListener("keyup", changedropdown);
+		option.addEventListener("click", changedropdown);
 	});
 }
 photopgraph();
