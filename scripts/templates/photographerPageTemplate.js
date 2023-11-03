@@ -65,6 +65,7 @@ function photographerPageTemplate(data) {
 		div_photograph_medias.setAttribute("class", "photograph-medias");
 
 		const label_tri_medias = document.createElement("label");
+		label_tri_medias.setAttribute("id","select-button");
 		label_tri_medias.textContent = "Trier par";
 
 		const div_custom_select=document.createElement("div");
@@ -73,7 +74,7 @@ function photographerPageTemplate(data) {
 		const but_select_button=document.createElement("button");
 		but_select_button.setAttribute("class","select-button");
 		but_select_button.setAttribute("role","combobox");
-		but_select_button.setAttribute("aria-labelledby","select button");
+		but_select_button.setAttribute("aria-labelledby","select-button");
 		but_select_button.setAttribute("aria-haspopup","listbox");
 		but_select_button.setAttribute("aria-expanded","false");
 		but_select_button.setAttribute("aria-controls","select-dropdown");
