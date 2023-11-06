@@ -1,4 +1,4 @@
-//La fonction prend en paramètre un objetc contenant les données du photographe
+//La fonction prend en paramètre un objet contenant les données du photographe
 //retourne la card du photographe (image, nom, prenom, lieu, et tarif journalier)
 
 //La fonction est utilisée dans un autre fichier js

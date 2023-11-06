@@ -10,8 +10,8 @@ const ligtBoxModal = document.getElementById("lightbox_modal");
 function displayModal() {
 
 	const inputprenom = document.getElementById("prenom");
-	//On modifie l'attribut aria-hidden a faux pour la modal contact
-	//et a vrai pour la modal Lightbox et la page principale
+	//On modifie l'attribut aria-hidden a false pour la modal contact
+	//et a true pour la modal Lightbox et la page principale
 	modal.setAttribute("aria-hidden", "false");
 	main.setAttribute("aria-hidden", "true");
 	ligtBoxModal.setAttribute("aria-hidden", "true");
@@ -24,8 +24,8 @@ function displayModal() {
 
 function closeModal() {
 	//La fonction est utilisé au click sur le bouton fermé X de la modal
-	//On modifie l'attribut aria-hidden a vrai pour la modal contact
-	//et a faux pour la modal Lightbox et la page principale
+	//On modifie l'attribut aria-hidden a true pour la modal contact
+	//et a false pour la modal Lightbox et la page principale
 	modal.setAttribute("aria-hidden", "true");
 	main.setAttribute("aria-hidden", "false");
 	//On masque la modal Contact

@@ -104,51 +104,9 @@ header img
     margin:0px 100px 50px 100px;
     width :86%;
 }
-
-/* .photograph-medias a 
-{
-    text-decoration: none;  
-} */
-    
-/*.photograph-medias select
-{
-        width: 170px;
-        border-radius: 5px; 
-        background: #901C1C;
-        margin-left: 30px;
-        color: #FFF;
-        font-family: DM Sans;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        border: none; 
-    /* border-bottom: 1px solid red; Ajoutez une bordure inférieure */
-    /* padding-bottom: 5px; 
-   
-}
-.photograph-medias select option{
-                 /* color: #FFF;
-                font-family: DM Sans;
-                font-size: 18px;
-                font-style: normal;
-                font-weight: 700;
-                line-height: normal; */
-                /* border: none; Supprimez la bordure par défaut 
-                 border-bottom: 5px solid red; /*Ajoutez une bordure inférieure
-                 padding: 5px; 
-            } */
-            
-/*hr
-{
-    /* margin:14px 0; */
-/* border-color: red; 
-border-top: 3px solid #FFF;
-color:#FFF;
-/* border-style: initial; 
-}*/
 /*****Dropdow Tri Medisas*****/
-.tri-medias{
+.tri-medias
+{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -171,54 +129,6 @@ color:#FFF;
     position: relative;    
 }
   
-  /* select { */
-    /* appearance: none; */
-    /* safari */
-    /* -webkit-appearance: none; */
-    /* other styles for aesthetics */
-    /* width: 100%; */
-    /* font-size: 1.15rem; */
-    /* padding: 0.675em 6em 0.675em 1em; */
-    /* background-color: #fff; */
-    /* border: 1px solid #caced1; */
-    /* border-radius: 0.25rem; */
-    /* border-radius: 5px;  */
-    /* color: #000; */
-    /* cursor: pointer; */
-    /* background: #901C1C; */
-    /* color: #FFF; */
-    /* font-family: DM Sans; */
-        /* font-size: 18px; */
-        /* font-style: normal; */
-        /* font-weight: 700; */
-        /* line-height: normal; */
-        /* border: none;  */
-  /* } */
-
-/* .custom-select::before,
-.custom-select::after {
-    --size: 0.3rem;
-    position: absolute;
-    content: "";
-    right: 1rem;
-    pointer-events: none;
-  }
-   */
-  /* .custom-select::before { */
-    /* border-left: var(--size) solid transparent;
-    border-right: var(--size) solid transparent; */
-    /* border-bottom: var(--size) solid black; */
-    /* top: 40%;
-    border-bottom: var(--size) solid #fff; */
-  /* } */
-  
-  /* .custom-select::after { */
-    /* border-left: var(--size) solid transparent;
-    border-right: var(--size) solid transparent;
-    border-top: var(--size) solid #fff;
-    top: 55%; */
-  /* } */
-
 .custom-select.active .arrow 
 {
     transform: rotate(180deg);
@@ -288,12 +198,7 @@ color:#FFF;
     justify-content: space-around;
     z-index: 1;
 }
-  
-/* .select-dropdown:focus-within  */
-/* { */
-    /* box-shadow: 0 10px 25px rgba(94, 108, 233, 0.6); */
-/* } */
-  
+    
 .select-dropdown li 
 {
     position: relative;
@@ -334,24 +239,6 @@ color:#FFF;
     left: 0;
     opacity: 0;
 }
-  /* .select-dropdown::-webkit-scrollbar { */
-    /* width: 7px; */
-  /* } */
-  /* .select-dropdown::-webkit-scrollbar-track { */
-    /* background: #901C1C; */
-    /* border-radius: 25px; */
-  /* } */
-
-  /* .select-dropdown li:hover, */
-/* .select-dropdown input:checked ~ label { */
-  /* background-color: #f2f2f2; */
-/* } */
-
-/* .select-dropdown input:focus ~ label { */
-  /* background-color: #dfdfdf; */
-/* } */
-
-
 /*****Dropdow Tri Medisas*****/
 
 .medias-photograph
@@ -367,7 +254,6 @@ color:#FFF;
 {
     margin-bottom:30px;
     margin-right: 5px;
-
 }
 
 .medias-photograph img 
@@ -678,4 +564,3 @@ form input
     margin:402px 13px 402px 0px;
 }
 /*************************/
-

@@ -1,5 +1,5 @@
 //La fonction prend un paramètre
-//les données du medias du fichierphotographers.json 
+//les données du medias 
 //elle retourne la card du media
 
 //La fonction est utilisée dans un autre fichier js
@@ -18,7 +18,6 @@ function mediaPageTemplate(data) {
 			picture = `assets/Sample_Photos/${photographerId}/${video}`;
 			media = document.createElement("video");
 			media.setAttribute("src", picture);
-			// media.setAttribute("alt", title);
 			media.setAttribute("tabindex", "0");
 			media.setAttribute("data-type", "media");
 			media.setAttribute("data-mediaid", id);

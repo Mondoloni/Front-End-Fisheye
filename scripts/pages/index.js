@@ -25,9 +25,6 @@ async function displayData(photographers) {
 
 async function init() {
 	// Récupère les datas des photographes
-	// const { photographers } = await getPhotographers();
-	// const tab = await getPhotographers();
-
 	//La fonction est définie dans un autre fichier js
 	// eslint-disable-next-line no-undef
 	const recupData = await recuperationData("./data/photographers.json");

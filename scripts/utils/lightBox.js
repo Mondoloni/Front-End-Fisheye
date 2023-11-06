@@ -9,8 +9,8 @@ const lightbox_btn_close = document.getElementById("imgclosemodal");
 //La fonction est utilisée dans un autre fichier js
 // eslint-disable-next-line no-unused-vars
 async function displayLightBox(idMedias, photographerId) {
-	//On modifie l'attribut aria-hidden a vrai pour la modal lightbox
-	//et faux pour la modal contact et la page principale
+	//On modifie l'attribut aria-hidden a true pour la modal lightbox
+	//et false pour la modal contact et la page principale
 	contactModal.setAttribute("aria-hidden", "true");
 	divMain.setAttribute("aria-hidden", "true");
 	section_lightbox_modal.setAttribute("aria-hidden", "false");
@@ -25,10 +25,8 @@ async function displayLightBox(idMedias, photographerId) {
 	// eslint-disable-next-line no-undef
 	const recupData = await recuperationData("./data/photographers.json");
 
-	// const response = await fetch("./data/photographers.json");
 	//On vérifié si l'on accède bien au fichier
 	if (recupData.reponse.ok) {
-		// const data = await response.json();
 		//On récupére les données du photographe 
 		const MediaToPhotograp = recupData.data.media.filter((medias) => medias.photographerId === photographerId);
 		const typeTri = document.getElementById("selected-value");
@@ -84,8 +82,8 @@ async function displayLightBox(idMedias, photographerId) {
 		let nextMedia = null;
 		let previousMedia = null;
 		//On parcours les medias
-		for (let i = 0; i < MediaToPhotograp.length; i++) {	//Si le media corssepond au media actuellement affiché
-			if (MediaToPhotograp[i].id == idMedias) {	//Si on est au dernier media on affecte au media suivant le media actuelle
+		for (let i = 0; i < MediaToPhotograp.length; i++) {	
+			if (MediaToPhotograp[i].id == idMedias) {	//Si on est au dernier media on affecte au media suivant le media actuel
 				if (i + 1 > MediaToPhotograp.length) {
 					nextMedia = idMedias;
 				}
@@ -103,9 +101,9 @@ async function displayLightBox(idMedias, photographerId) {
 				}
 			}
 		}
-		//On attribut au bouton suivant un évenement au clique qui declanche la fonction afficherMediaSuivant
+		//On attribut au bouton suivant un évenement au click qui declenche la fonction afficherMediaSuivant
 		imgNextMedia.setAttribute("OnClick", `afficherMediaSuivant(${nextMedia},${photographerId})`);
-		//On attribut au bouton precedent un évenement au clique qui declanche la fonction afficherMediaPrecedent
+		//On attribut au bouton precedent un évenement au click qui declenche la fonction afficherMediaPrecedent
 		imgPreviousMedia.setAttribute("OnClick", `afficherMediaPrecedent(${previousMedia},${photographerId})`);
 	}
 	else {
@@ -118,8 +116,8 @@ async function displayLightBox(idMedias, photographerId) {
 //La fonction est utilisée dans un autre fichier js
 // eslint-disable-next-line no-unused-vars
 function closeLightbox() {
-	//On modifie l'attribut aria-hidden a vrai pour la modalLightbox et la modal contact
-	//et a vrai pour la page principale
+	//On modifie l'attribut aria-hidden a true pour la modalLightbox et la modal contact
+	//et a false pour la page principale
 	contactModal.setAttribute("aria-hidden", "true");
 	divMain.setAttribute("aria-hidden", "false");
 	section_lightbox_modal.setAttribute("aria-hidden", "true");
@@ -134,8 +132,6 @@ function closeLightbox() {
 //La fonction est utilisée dans un autre fichier js
 // eslint-disable-next-line no-unused-vars
 async function afficherMediaSuivant(idMedias, photographerId) {
-
-	// const response = await fetch("./data/photographers.json");
 
 	//La fonction est définie dans un autre fichier js
 	// eslint-disable-next-line no-undef
@@ -207,7 +203,7 @@ async function afficherMediaSuivant(idMedias, photographerId) {
 			}
 		}
 		//On parcours les medias
-		for (let i = 0; i < MediaToPhotograp.length; i++) {//Si le media corssepond au media actuellement affiché
+		for (let i = 0; i < MediaToPhotograp.length; i++) {
 			if (MediaToPhotograp[i].id == idMedias) {//Si on est au dernier media on affecte au media suivant le media actuelle
 				if (i + 1 > MediaToPhotograp.length) {
 					nextMedia = idMedias;
@@ -226,9 +222,9 @@ async function afficherMediaSuivant(idMedias, photographerId) {
 				}
 			}
 		}
-		//On attribut au bouton suivant un évenement au clique qui declanche la fonction afficherMediaSuivant
+		//On attribut au bouton suivant un évenement au click qui declanche la fonction afficherMediaSuivant
 		imgNextMedia.setAttribute("OnClick", `afficherMediaSuivant(${nextMedia},${photographerId})`);
-		//On attribut au bouton precedent un évenement au clique qui declanche la fonction afficherMediaPrecedent
+		//On attribut au bouton precedent un évenement au click qui declanche la fonction afficherMediaPrecedent
 		imgPreviousMedia.setAttribute("OnClick", `afficherMediaPrecedent(${previousMedia},${photographerId})`);
 	}
 }
@@ -340,7 +336,7 @@ document.addEventListener("keydown", (e) => {
 	const keyCode = e.keyCode ? e.keyCode : e.which;
 	if (section_lightbox_modal.getAttribute("aria-hidden") == "false") {
 		switch (keyCode) {
-		case 27: closeLightbox();//Si l'appui est sur echape on ferme la modal
+		case 27: closeLightbox();//Si l'appui est sur echap on ferme la modal
 			break;
 		case 39: eval(mediaSuivant);//si l'appui clavier est sur la fleche droite on lance la fonction afficherMediaSuivant
 			break;

@@ -22,7 +22,6 @@ async function getPhotographerById() {
 }
 
 async function displayData(photograph) {
-	// let nbLikesTotal = 0;
 	const photographersSection = document.querySelector(".photograph-header");
 	//On passe en paramètre au template de la page photograph les données liées au photographe
 	// qui ont été retourné par la fonction getPhotographerById
@@ -92,7 +91,7 @@ function ajoutLikesMedias(idMedias, likes) {
 async function changeTriMedias() {
 	// Récupère les datas des photographes
 	const { photograph } = await getPhotographerById();
-	// const typeTri = document.getElementById("tri_medias");
+	
 	const typeTri = document.getElementById("selected-value");
 	const divMedia = document.getElementById("medias-photograph");
 
@@ -104,9 +103,8 @@ async function changeTriMedias() {
 		break;
 	case "Date": photograph[1].sort((a, b) => new Date(a.date) - new Date(b.date));
 		break;
-	case "Titre": photograph[1].sort((a, b) => a.title.localeCompare(b.title));
-		
-	break;
+	case "Titre": photograph[1].sort((a, b) => a.title.localeCompare(b.title));	
+		break;
 	}
 	//On parcours la liste des medias et on appel les fonctions qui créént et ajoutent les cards des medias
 	photograph[1].forEach((medias) => {
@@ -153,7 +151,7 @@ async function photopgraph()
 	const customSelect = document.querySelector(".custom-select");
 	const selectBtn = document.querySelector(".select-button");
 	
-	//On ajoute un listener sur le clicke du dropdown du tri des medias
+	//On ajoute un listener sur le click du dropdown du tri des medias
 	selectBtn.addEventListener("click", () => 
 	{
 		//Ajout/retrait de la classe custom-select.active 
@@ -170,7 +168,7 @@ async function photopgraph()
 	
 	optionsList.forEach((option) => {
 		function changedropdown(e) {
-			//Si l'evenement est un clique on modifie la valeur affiché dans le selected value
+			//Si l'evenement est un click on modifie la valeur affiché dans le selected value
 			//et on ferme le dropdown
 		if (e.type === "click" && e.clientX !== 0 && e.clientY !== 0) {
 			selectedValue.textContent = this.children[1].textContent;
@@ -183,11 +181,10 @@ async function photopgraph()
 			customSelect.classList.remove("active");
 		}
 		}
-		//Ajout d'un écouteur au clique et a l'action sur le clavier sur les balises <li> du dropdown
+		//Ajout d'un écouteur au click et a l'action sur le clavier sur les balises <li> du dropdown
 		//Au declenchement de l'ecouteur on execute la fonction changedropdown
 		option.addEventListener("keyup", changedropdown);
 		option.addEventListener("click", changedropdown);
 	});
 }
 photopgraph();
-
